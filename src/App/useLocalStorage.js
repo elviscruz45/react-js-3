@@ -1,6 +1,15 @@
 import React from 'react';
 
 function useLocalStorage(itemName, initialValue) {
+
+  const initialState = ({ initialValue }) => ({
+    sincronizedItem: true,
+    error: false,
+    loading: true,
+    item: initialValue,
+  });
+
+  
   const [state, dispatch] = React.useReducer(reducer, initialState({ initialValue }));
   const {
     sincronizedItem,
@@ -72,12 +81,7 @@ function useLocalStorage(itemName, initialValue) {
   };
 }
 
-const initialState = ({ initialValue }) => ({
-  sincronizedItem: true,
-  error: false,
-  loading: true,
-  item: initialValue,
-});
+
 
 const actionTypes = {
   error: 'ERROR',
